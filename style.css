@@ -11,3 +11,13 @@ body {
 canvas {
     position: absolute;
 }
+
+h3#help-text {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #ffffffd1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

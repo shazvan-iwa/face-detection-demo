@@ -24,11 +24,11 @@ function startWebcam() {
 }
 
 function getLabeledFaceDescriptions() {
-  const labels = ["shazvan"];
+  const labels = ["shazvan", "nahla", "riha", "kala"];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
-      for (let i = 1; i <= 2; i++) {
+      for (let i = 1; i <= 1; i++) {
         const img = await faceapi.fetchImage(`./labels/${label}/${i}.jpg`);
         const detections = await faceapi
           .detectSingleFace(img)
@@ -42,10 +42,10 @@ function getLabeledFaceDescriptions() {
 }
 
 video.addEventListener("play", async () => {
-  helpText.innerHTML('You are almost there...! Please Wait...!')
+  helpText.innerHTML= 'You are almost there...! Please Wait...!';
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
-  helpText.innerHTML('')
+  helpText.remove();
 
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
