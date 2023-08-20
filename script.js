@@ -1,4 +1,5 @@
 const video = document.getElementById("video");
+const helpText = document.getElementById("help-text");
 
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
@@ -41,10 +42,10 @@ function getLabeledFaceDescriptions() {
 }
 
 video.addEventListener("play", async () => {
-  console.log('test')
+  helpText.innerHTML('You are almost there...! Please Wait...!')
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
-  console.log('test2')
+  helpText.innerHTML('')
 
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
